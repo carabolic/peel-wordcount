@@ -2,6 +2,10 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3 http://maven.apache.org/xsd/assembly-1.1.3.xsd">
 
+    <!-- Assembles a bundle for production (resources/* folders are symlinked) -->
+    <!-- At the moment, the symlinks are handled by a complementary 'maven-junction-plugin' -->
+    <!-- This can be handled natively by the assembly plugin once the <symlinks> syntax proposed by MASSEMBLY-343 is integrated -->
+
     <id>bin</id>
     <formats>
         <format>dir</format>
@@ -22,9 +26,9 @@
             <fileMode>0644</fileMode>
             <directoryMode>0755</directoryMode>
             <excludes>
-                <exclude>eu.stratosphere:peel-wordcount-*-datagens</exclude>
-                <exclude>eu.stratosphere:peel-wordcount-*-jobs</exclude>
-                <exclude>eu.stratosphere:peel-wordcount-*-apps</exclude>
+                <exclude>${project.parent.groupId}:${project.parent.artifactId}-*-datagens</exclude>
+                <exclude>${project.parent.groupId}:${project.parent.artifactId}-*-jobs</exclude>
+                <exclude>${project.parent.groupId}:${project.parent.artifactId}-*-apps</exclude>
             </excludes>
         </dependencySet>
         <!-- datagens -->
@@ -38,7 +42,7 @@
             <fileMode>0644</fileMode>
             <directoryMode>0755</directoryMode>
             <includes>
-                <include>eu.stratosphere:peel-wordcount-*-datagens</include>
+                <include>${project.parent.groupId}:${project.parent.artifactId}-*-datagens</include>
             </includes>
         </dependencySet>
         <!-- apps -->
@@ -52,8 +56,8 @@
             <fileMode>0644</fileMode>
             <directoryMode>0755</directoryMode>
             <includes>
-                <include>eu.stratosphere:peel-wordcount-*-jobs</include>
-                <include>eu.stratosphere:peel-wordcount-*-apps</include>
+                <include>${project.parent.groupId}:${project.parent.artifactId}-*-jobs</include>
+                <include>${project.parent.groupId}:${project.parent.artifactId}-*-apps</include>
             </includes>
         </dependencySet>
     </dependencySets>
@@ -68,24 +72,14 @@
                 <include>*.sh</include>
             </includes>
         </fileSet>
-        <!-- create an empty config directory -->
-        <fileSet>
-            <directory>src/main/resources/config</directory>
-            <outputDirectory>config</outputDirectory>
-            <fileMode>0644</fileMode>
-        </fileSet>
-        <!-- create an empty datasets directory -->
-        <fileSet>
-            <directory>src/main/resources/datasets</directory>
-            <outputDirectory>datasets</outputDirectory>
-            <fileMode>0644</fileMode>
-        </fileSet>
-        <!-- create an empty downloads directory -->
+        
+        <!-- copy downloads directory -->
         <fileSet>
             <directory>src/main/resources/downloads</directory>
             <outputDirectory>downloads</outputDirectory>
             <fileMode>0644</fileMode>
         </fileSet>
+
         <!-- create an empty log directory -->
         <fileSet>
             <directory>src/main/assembly</directory>
@@ -113,21 +107,12 @@
                 <exclude>**/*</exclude>
             </excludes>
         </fileSet>
-        <!-- create util directory -->
-        <fileSet>
-            <directory>src/main/resources/util</directory>
-            <outputDirectory>util</outputDirectory>
-            <fileMode>0644</fileMode>
-            <excludes>
-                <exclude>**/*.sh</exclude>
-            </excludes>
-        </fileSet>
     </fileSets>
 
     <files>
         <!-- create a VERSION file to the project root -->
         <file>
-            <source>src/main/resources/VERSION</source>
+            <source>src/main/resources/version.txt</source>
             <destName>VERSION</destName>
             <fileMode>0644</fileMode>
             <filtered>true</filtered>
