@@ -1,4 +1,4 @@
-package eu.stratosphere.peel.datagen.util;
+package eu.stratosphere.peel.wordcount.datagen.util;
 
 
 public interface SymmetricPRNG {

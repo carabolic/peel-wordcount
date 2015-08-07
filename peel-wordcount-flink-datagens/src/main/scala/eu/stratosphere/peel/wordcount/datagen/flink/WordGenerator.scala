@@ -1,6 +1,6 @@
-package eu.stratosphere.peel.datagen.flink
+package eu.stratosphere.peel.wordcount.datagen.flink
 
-import eu.stratosphere.peel.datagen.util.RanHash
+import eu.stratosphere.peel.wordcount.datagen.util.RanHash
 import org.apache.flink.api.scala._
 import org.apache.flink.core.fs.FileSystem
 import org.apache.flink.util.NumberSequenceIterator

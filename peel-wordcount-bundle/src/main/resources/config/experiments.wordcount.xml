@@ -11,7 +11,7 @@
         <constructor-arg name="runner" ref="flink-0.9.0"/>
         <constructor-arg name="command">
             <value><![CDATA[
-              -v -c eu.stratosphere.peel.datagen.flink.WordGenerator               \
+              -v -c eu.stratosphere.peel.wordcount.datagen.flink.WordGenerator     \
               ${app.path.datagens}/peel-wordcount-flink-datagens-1.0-SNAPSHOT.jar  \
               ${datagen.dictionary.dize}                                           \
               ${system.default.config.parallelism.total}                           \
@@ -52,7 +52,7 @@
     <bean id="experiment.flink.wordcount" parent="experiment.flink-0.9.0" abstract="true">
         <constructor-arg name="command">
             <value><![CDATA[
-              -v -c eu.stratosphere.peel.flink.Wordcount                           \
+              -v -c eu.stratosphere.peel.wordcount.flink.Wordcount                 \
               ${app.path.apps}/peel-wordcount-flink-jobs-1.0-SNAPSHOT.jar          \
               ${system.hadoop-2.path.input}/rubbish.txt                            \
               ${system.hadoop-2.path.output}/wordcount
@@ -65,7 +65,7 @@
     <bean id="experiment.spark.wordcount" parent="experiment.spark-1.4.0" abstract="true">
         <constructor-arg name="command">
             <value><![CDATA[
-              --class eu.stratosphere.peel.spark.Wordcount                         \
+              --class eu.stratosphere.peel.wordcount.spark.Wordcount               \
               ${app.path.apps}/peel-wordcount-spark-jobs-1.0-SNAPSHOT.jar          \
               ${system.hadoop-2.path.input}/rubbish.txt                            \
               ${system.hadoop-2.path.output}/wordcount

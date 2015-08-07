@@ -1,4 +1,4 @@
-package eu.stratosphere.peel.flink
+package eu.stratosphere.peel.wordcount.flink
 
 import org.apache.flink.api.scala._
 

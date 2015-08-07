@@ -1,6 +1,6 @@
-package eu.stratosphere.peel.spark
+package eu.stratosphere.peel.wordcount.spark
 
-import org.apache.spark.{SparkContext, SparkConf}
+import org.apache.spark.{SparkConf, SparkContext}
 
 /** A `WordCount` workload job for Spark. */
 object Wordcount {
