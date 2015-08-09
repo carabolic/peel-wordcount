@@ -34,7 +34,7 @@
         <!-- bundle jars -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>peel-wordcount-flink-datagens</artifactId>
+            <artifactId>peel-wordcount-datagens</artifactId>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>

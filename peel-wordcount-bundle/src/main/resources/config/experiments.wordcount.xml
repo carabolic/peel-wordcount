@@ -12,7 +12,7 @@
         <constructor-arg name="command">
             <value><![CDATA[
               -v -c eu.stratosphere.peel.wordcount.datagen.flink.WordGenerator     \
-              ${app.path.datagens}/peel-wordcount-flink-datagens-1.0-SNAPSHOT.jar  \
+              ${app.path.datagens}/peel-wordcount-datagens-1.0-SNAPSHOT.jar        \
               ${datagen.dictionary.dize}                                           \
               ${system.default.config.parallelism.total}                           \
               ${datagen.tuples.per.task}                                           \

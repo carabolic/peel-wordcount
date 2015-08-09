@@ -39,7 +39,7 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>peel-wordcount-flink-datagens</artifactId>
+                <artifactId>peel-wordcount-datagens</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -161,7 +161,7 @@
 
     <modules>
         <module>peel-wordcount-bundle</module>
-        <module>peel-wordcount-flink-datagens</module>
+        <module>peel-wordcount-datagens</module>
         <module>peel-wordcount-flink-jobs</module>
         <module>peel-wordcount-spark-jobs</module>
     </modules>
