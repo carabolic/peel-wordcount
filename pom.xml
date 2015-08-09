@@ -27,6 +27,9 @@
         <java.version>1.7</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+
+        <!-- Peel -->
+        <peel.version>1.0-SNAPSHOT</peel.version>
     </properties>
 
     <dependencyManagement>
@@ -44,6 +47,11 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
+                <artifactId>peel-wordcount-extensions</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>peel-wordcount-flink-jobs</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -51,6 +59,18 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>peel-wordcount-spark-jobs</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+
+            <!-- Peel -->
+            <dependency>
+                <groupId>eu.stratosphere</groupId>
+                <artifactId>peel-core</artifactId>
+                <version>${peel.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>eu.stratosphere</groupId>
+                <artifactId>peel-extensions</artifactId>
+                <version>${peel.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -162,6 +182,7 @@
     <modules>
         <module>peel-wordcount-bundle</module>
         <module>peel-wordcount-datagens</module>
+        <module>peel-wordcount-extensions</module>
         <module>peel-wordcount-flink-jobs</module>
         <module>peel-wordcount-spark-jobs</module>
     </modules>

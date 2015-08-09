@@ -24,9 +24,9 @@
             <fileMode>0644</fileMode>
             <directoryMode>0755</directoryMode>
             <excludes>
-                <exclude>eu.stratosphere:${project.parent.artifactId}-*-datagens</exclude>
-                <exclude>eu.stratosphere:${project.parent.artifactId}-*-jobs</exclude>
-                <exclude>eu.stratosphere:${project.parent.artifactId}-*-apps</exclude>
+                <exclude>${project.parent.groupId}:${project.parent.artifactId}-*-datagens</exclude>
+                <exclude>${project.parent.groupId}:${project.parent.artifactId}-*-jobs</exclude>
+                <exclude>${project.parent.groupId}:${project.parent.artifactId}-*-apps</exclude>
             </excludes>
         </dependencySet>
         <!-- datagens -->
@@ -40,7 +40,7 @@
             <fileMode>0644</fileMode>
             <directoryMode>0755</directoryMode>
             <includes>
-                <include>eu.stratosphere:${project.parent.artifactId}-*-datagens</include>
+                <include>${project.parent.groupId}:${project.parent.artifactId}-*-datagens</include>
             </includes>
         </dependencySet>
         <!-- apps -->
@@ -54,8 +54,8 @@
             <fileMode>0644</fileMode>
             <directoryMode>0755</directoryMode>
             <includes>
-                <include>eu.stratosphere:${project.parent.artifactId}-*-jobs</include>
-                <include>eu.stratosphere:${project.parent.artifactId}-*-apps</include>
+                <include>${project.parent.groupId}:${project.parent.artifactId}-*-jobs</include>
+                <include>${project.parent.groupId}:${project.parent.artifactId}-*-apps</include>
             </includes>
         </dependencySet>
     </dependencySets>
