@@ -42,12 +42,12 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>peel-wordcount-datagens</artifactId>
+                <artifactId>peel-wordcount-peelextensions</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>peel-wordcount-extensions</artifactId>
+                <artifactId>peel-wordcount-datagens</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -175,8 +175,8 @@
 
     <modules>
         <module>peel-wordcount-bundle</module>
+        <module>peel-wordcount-peelextensions</module>
         <module>peel-wordcount-datagens</module>
-        <module>peel-wordcount-extensions</module>
         <module>peel-wordcount-flink-jobs</module>
         <module>peel-wordcount-spark-jobs</module>
     </modules>

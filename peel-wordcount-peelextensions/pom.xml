@@ -8,7 +8,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>peel-wordcount-extensions</artifactId>
+    <artifactId>peel-wordcount-peelextensions</artifactId>
 
     <properties>
         <!-- Scala -->

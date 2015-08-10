@@ -36,7 +36,7 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>peel-wordcount-extensions</artifactId>
+            <artifactId>peel-wordcount-peelextensions</artifactId>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
