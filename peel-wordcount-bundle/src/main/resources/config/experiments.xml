@@ -8,8 +8,8 @@
 
     <context:annotation-config/>
 
-    <!-- Scan for annotated Peel components in the 'eu.stratosphere.peel.wordcount' package -->
-    <context:component-scan base-package="eu.stratosphere.peel.wordcount"/>
+    <!-- Scan for annotated Peel components in the 'org.peelframework.wordcount' package -->
+    <context:component-scan base-package="org.peelframework.wordcount"/>
 
     <!-- custom system beans -->
     <import resource="systems.xml"/>

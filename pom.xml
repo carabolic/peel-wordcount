@@ -104,15 +104,9 @@
                         </execution>
                         <execution>
                             <id>scala-test-compile</id>
-                            <phase>compile</phase>
+                            <phase>test-compile</phase>
                             <goals>
                                 <goal>testCompile</goal>
-                            </goals>
-                        </execution>
-                        <execution>
-                            <phase>process-resources</phase>
-                            <goals>
-                                <goal>compile</goal>
                             </goals>
                         </execution>
                     </executions>
