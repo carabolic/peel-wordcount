@@ -7,7 +7,7 @@
     * Data Generators
     *************************************************************************-->
 
-    <bean id="datagen.words" class="org.peelframework.extensions.flink.beans.job.FlinkJob">
+    <bean id="datagen.words" class="org.peelframework.flink.beans.job.FlinkJob">
         <constructor-arg name="runner" ref="flink-0.9.0"/>
         <constructor-arg name="command">
             <value><![CDATA[
