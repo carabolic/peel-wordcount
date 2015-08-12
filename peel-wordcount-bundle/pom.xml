@@ -40,10 +40,6 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>peel-wordcount-flink-jobs</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
             <artifactId>peel-wordcount-spark-jobs</artifactId>
         </dependency>
 
