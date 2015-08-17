@@ -43,9 +43,9 @@ function create_archetype {
     xmlstarlet ed -L -d '//_:include[contains(text(),"archetype.sh")]'                                   $ARCH_MDT
     xmlstarlet ed -L -d '//_:include[contains(text(),".gitmodules")]'                                    $ARCH_MDT
     xmlstarlet ed -L -d '//_:include[contains(text(),".iml")]'                                           $ARCH_MDT
-    xmlstarlet ed -L -d '//_:includes[not(normalize-space())]'                                           $ARCH_MDT
-    xmlstarlet ed -L -d '//_:directory[not(normalize-space())]'                                          $ARCH_MDT
-    xmlstarlet ed -L -d '//_:fileSet[not(normalize-space())]'                                            $ARCH_MDT
+    xmlstarlet ed -L -d '//_:modules//_:includes[not(normalize-space())]'                                $ARCH_MDT
+    xmlstarlet ed -L -d '//_:modules//_:directory[not(normalize-space())]'                               $ARCH_MDT
+    xmlstarlet ed -L -d '//_:modules//_:fileSet[not(normalize-space())]'                                 $ARCH_MDT
 
     # 3) fix the generated root pom.xml
     echo "FIXING GENERATED 'pom.xml'"
