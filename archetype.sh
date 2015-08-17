@@ -12,6 +12,8 @@ function create_archetype {
     ARCHID=$1
     TARGET=$2
     # 1) create the archetype
+    echo "CLEANING MAVEN PROJECT."
+    mvn clean
     echo "GENERATING ARCHETYPE FROM CURRENT BRANCH"
     mvn archetype:create-from-project                                                                            \
         -Darchetype.properties=./archetype.properties                                                            \
