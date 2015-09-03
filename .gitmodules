@@ -13,3 +13,6 @@
 [submodule "peel-wordcount-bundle/src/main/resources/config/poodle-9"]
 	path = peel-wordcount-bundle/src/main/resources/config/poodle-9
 	url = git@github.com:aalexandrov/peelconfig.poodle-9.git
+[submodule "peel-wordcount-bundle/src/main/resources/config/acme-master"]
+	path = peel-wordcount-bundle/src/main/resources/config/acme-master
+	url = git@github.com:stratosphere/peelconfig.acme.git
