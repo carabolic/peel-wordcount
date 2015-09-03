@@ -52,7 +52,7 @@
     <bean id="experiment.flink.wordcount" parent="experiment.flink-0.9.0" abstract="true">
         <constructor-arg name="command">
             <value><![CDATA[
-              -v -c org.peelframework.wordcount.flink.Wordcount                    \
+              -v -c org.peelframework.wordcount.flink.FlinkWC                      \
               ${app.path.apps}/peel-wordcount-flink-jobs-1.0-SNAPSHOT.jar          \
               ${system.hadoop-2.path.input}/rubbish.txt                            \
               ${system.hadoop-2.path.output}/wordcount
@@ -69,7 +69,7 @@
     <bean id="experiment.spark.wordcount" parent="experiment.spark-1.4.0" abstract="true">
         <constructor-arg name="command">
             <value><![CDATA[
-              --class org.peelframework.wordcount.spark.Wordcount                  \
+              --class org.peelframework.wordcount.spark.SparkWC                    \
               ${app.path.apps}/peel-wordcount-spark-jobs-1.0-SNAPSHOT.jar          \
               ${system.hadoop-2.path.input}/rubbish.txt                            \
               ${system.hadoop-2.path.output}/wordcount

@@ -3,7 +3,7 @@ package org.peelframework.wordcount.flink
 import org.apache.flink.api.scala._
 
 /** A `WordCount` workload job for Flink. */
-object Wordcount {
+object FlinkWC {
 
   def main(args: Array[String]) {
     if (args.length != 2) {

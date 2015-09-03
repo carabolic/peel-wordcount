@@ -3,7 +3,7 @@ package org.peelframework.wordcount.spark
 import org.apache.spark.{SparkConf, SparkContext}
 
 /** A `WordCount` workload job for Spark. */
-object Wordcount {
+object SparkWC {
 
   def main(args: Array[String]) {
     if (args.length != 2) {
