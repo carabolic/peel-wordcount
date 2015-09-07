@@ -91,7 +91,7 @@ class QueryRuntimes extends Command {
       logger.info(s"------------------------------------------------------------------------------------------------")
       logger.info(s"| name                      | name                      |        min |        max |     median |")
       logger.info(s"------------------------------------------------------------------------------------------------")
-      for ((suite, name, median, min, max) <- runtimes) {
+      for ((suite, name, min, max, median) <- runtimes) {
         logger.info(f"| $suite%-25s | $name%-25s | $min%10d | $max%10d | $median%10d | ")
       }
       logger.info(s"------------------------------------------------------------------------------------------------")
