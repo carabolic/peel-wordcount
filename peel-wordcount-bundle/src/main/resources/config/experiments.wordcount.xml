@@ -13,9 +13,10 @@
             <value><![CDATA[
               -v -c org.peelframework.wordcount.datagen.flink.WordGenerator        \
               ${app.path.datagens}/peel-wordcount-datagens-1.0-SNAPSHOT.jar        \
-              ${datagen.dictionary.dize}                                           \
               ${system.default.config.parallelism.total}                           \
               ${datagen.tuples.per.task}                                           \
+              ${datagen.dictionary.dize}                                           \
+              ${datagen.data-distribution}                                         \
               ${system.hadoop-2.path.input}/rubbish.txt
             ]]>
             </value>
@@ -112,6 +113,44 @@
         </constructor-arg>
     </bean>
 
+    <!-- suite for local development and testing with generated data -->
+    <bean id="wordcount.default.generated" class="org.peelframework.core.beans.experiment.ExperimentSuite">
+        <constructor-arg name="experiments">
+            <list value-type="org.peelframework.core.beans.experiment.Experiment">
+                <bean parent="experiment.flink.wordcount">
+                    <constructor-arg name="name" value="wordcount.flink"/>
+                    <constructor-arg name="inputs">
+                        <set>
+                            <ref bean="dataset.words.generated" />
+                        </set>
+                    </constructor-arg>
+                    <constructor-arg name="config">
+                        <value><![CDATA[
+                                  datagen.dictionary.dize                 = 10000
+                                  datagen.tuples.per.task                 = 1000000
+                                  datagen.data-distribution               = Uniform
+                                ]]></value>
+                    </constructor-arg>
+                </bean>
+                <bean parent="experiment.spark.wordcount">
+                    <constructor-arg name="name" value="wordcount.spark"/>
+                    <constructor-arg name="inputs">
+                        <set>
+                            <ref bean="dataset.words.generated" />
+                        </set>
+                    </constructor-arg>
+                    <constructor-arg name="config">
+                        <value><![CDATA[
+                                  datagen.dictionary.dize                 = 10000
+                                  datagen.tuples.per.task                 = 1000000
+                                  datagen.data-distribution               = Uniform
+                                ]]></value>
+                    </constructor-arg>
+                </bean>
+            </list>
+        </constructor-arg>
+    </bean>
+
     <!-- suite for scale-out on 5, 10, and 20 nodes -->
     <bean id="wordcount.scale-out" class="org.peelframework.core.beans.experiment.ExperimentSuite">
         <constructor-arg name="experiments">
@@ -139,6 +178,7 @@
                                   system.default.config.parallelism.total = ${env.slaves.__topXXX__.total.parallelism}
                                   datagen.dictionary.dize                 = 10000
                                   datagen.tuples.per.task                 = 10000000 # ~ 100 MB
+                                  datagen.data-distribution               = Uniform
                                 ]]></value>
                             </constructor-arg>
                         </bean>
@@ -155,6 +195,7 @@
                                   system.default.config.parallelism.total = ${env.slaves.__topXXX__.total.parallelism}
                                   datagen.dictionary.dize                 = 10000
                                   datagen.tuples.per.task                 = 10000000 # ~ 100 MB
+                                  datagen.data-distribution               = Uniform
                                 ]]></value>
                             </constructor-arg>
                         </bean>
