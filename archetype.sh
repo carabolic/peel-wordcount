@@ -15,29 +15,32 @@ function create_archetype {
     echo "CLEANING MAVEN PROJECT."
     mvn clean
     echo "GENERATING ARCHETYPE FROM CURRENT BRANCH"
-    mvn archetype:create-from-project                                                                            \
-        -Darchetype.properties=./archetype.properties                                                            \
+    mvn archetype:create-from-project                                                                                  \
+        -Darchetype.properties=./archetype.properties                                                                  \
         -Darchetype.artifactId="$ARCHID"
 
     # 2) fix the archetype file structure
     echo "FIXING FILES IN GENERATED ARCHETYPE"
     # copy explicitly the .gitignore file
-    cp ./.gitignore "$ARCH_DIR/src/main/resources/archetype-resources/.gitignore"
+    cp ./.gitignore                                                                                                    \
+       "$ARCH_DIR/src/main/resources/archetype-resources/"
+    cp ./peel-wordcount-bundle/src/main/resources/config/hosts/.gitignore                                              \
+       "$ARCH_DIR/src/main/resources/archetype-resources/__rootArtifactId__-bundle/src/main/resources/config/hosts/"
     # remove the copy of this shell script in the archetype folder
-    find "$ARCH_DIR/src/main/resources/archetype-resources"                                                      \
-         -type f -name 'archetype.sh'                                                                            |
+    find "$ARCH_DIR/src/main/resources/archetype-resources"                                                            \
+         -type f -name 'archetype.sh'                                                                                  |
          xargs rm -Rf
     # remove obsolete .gitmodules files
-    find "$ARCH_DIR/src/main/resources/archetype-resources"                                                      \
-         -type f -name '.gitmodules'                                                                             |
+    find "$ARCH_DIR/src/main/resources/archetype-resources"                                                            \
+         -type f -name '.gitmodules'                                                                                   |
          xargs rm -f
     # remove obsolete .iml files
-    find "$ARCH_DIR/src/main/resources/archetype-resources"                                                      \
-         -type f -name '*.iml'                                                                                   |
+    find "$ARCH_DIR/src/main/resources/archetype-resources"                                                            \
+         -type f -name '*.iml'                                                                                         |
          xargs rm -f
     # remove obsolete config subfolders
-    find "$ARCH_DIR/src/main/resources/archetype-resources/__rootArtifactId__-bundle/src/main/resources/config"  \
-         -mindepth 1 -type d                                                                                     |
+    find "$ARCH_DIR/src/main/resources/archetype-resources/__rootArtifactId__-bundle/src/main/resources/config/hosts"  \
+         -mindepth 1 -type d                                                                                           |
          xargs rm -Rf
 
     # 3) fix the generated archetype-metadata.xml
