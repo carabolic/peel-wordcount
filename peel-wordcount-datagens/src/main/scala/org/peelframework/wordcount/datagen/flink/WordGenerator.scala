@@ -18,7 +18,7 @@ object WordGenerator {
     }
 
     val numberOfTasks         = args(0).toInt
-    val tuplesPerTask         = args(1).toInt
+    val tuplesPerTask         = args(1).toLong
     val sizeOfDictionary      = args(2).toInt
     implicit val distribution = parseDist(sizeOfDictionary, args(3))
     val outputPath            = args(4)
