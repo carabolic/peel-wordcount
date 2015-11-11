@@ -47,9 +47,9 @@ class ExperimentsDefinitions extends ApplicationContextAware {
     mc           = ctx.getBean(classOf[Mustache.Compiler])
   )
 
-  @Bean(name = Array("spark-1.3.1"))
-  def `spark-1.3.1`: Spark = new Spark(
-    version      = "1.3.1",
+  @Bean(name = Array("spark-1.4.0"))
+  def `spark-1.4.0`: Spark = new Spark(
+    version      = "1.4.0",
     configKey    = "spark",
     lifespan     = Lifespan.EXPERIMENT,
     dependencies = Set(ctx.getBean("hdfs-2.7.1", classOf[HDFS2])),
@@ -67,9 +67,10 @@ class ExperimentsDefinitions extends ApplicationContextAware {
       """
         |-v -c org.peelframework.wordcount.datagen.flink.WordGenerator        \
         |${app.path.datagens}/peel-wordcount-datagens-1.0-SNAPSHOT.jar        \
-        |${datagen.dictionary.dize}                                           \
         |${system.default.config.parallelism.total}                           \
         |${datagen.tuples.per.task}                                           \
+        |${datagen.dictionary.dize}                                           \
+        |${datagen.data-distribution}                                         \
         |${system.hadoop-2.path.input}/rubbish.txt
       """.stripMargin.trim
   )
@@ -131,7 +132,7 @@ class ExperimentsDefinitions extends ApplicationContextAware {
         """.stripMargin.trim,
       config  = ConfigFactory.parseString(""),
       runs    = 3,
-      runner  = ctx.getBean("spark-1.3.1", classOf[Spark]),
+      runner  = ctx.getBean("spark-1.4.0", classOf[Spark]),
       inputs  = Set(ctx.getBean("dataset.words.static", classOf[DataSet])),
       outputs = Set(ctx.getBean("wordcount.output", classOf[ExperimentOutput]))
     )
@@ -158,6 +159,7 @@ class ExperimentsDefinitions extends ApplicationContextAware {
           |system.default.config.parallelism.total = ${env.slaves.__topXXX__.total.parallelism}
           |datagen.dictionary.dize                 = 10000
           |datagen.tuples.per.task                 = 10000000 # ~ 100 MB
+          |datagen.data-distribution               = Uniform
         """.stripMargin.trim),
       runs    = 3,
       runner  = ctx.getBean("flink-0.9.0", classOf[Flink]),
@@ -180,9 +182,10 @@ class ExperimentsDefinitions extends ApplicationContextAware {
           |system.default.config.parallelism.total = ${env.slaves.__topXXX__.total.parallelism}
           |datagen.dictionary.dize                 = 10000
           |datagen.tuples.per.task                 = 10000000 # ~ 100 MB
+          |datagen.data-distribution               = Uniform
         """.stripMargin.trim),
       runs    = 3,
-      runner  = ctx.getBean("spark-1.3.1", classOf[Spark]),
+      runner  = ctx.getBean("spark-1.4.0", classOf[Spark]),
       inputs  = Set(ctx.getBean("dataset.words.generated", classOf[DataSet])),
       outputs = Set(ctx.getBean("wordcount.output", classOf[ExperimentOutput]))
     )
