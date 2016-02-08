@@ -1,11 +1,9 @@
-package org.peelframework.wordcount
+package config.fixtures
 
-import com.samskivert.mustache.Mustache
 import com.typesafe.config.ConfigFactory
 import org.peelframework.core.beans.data.{CopiedDataSet, DataSet, ExperimentOutput, GeneratedDataSet}
 import org.peelframework.core.beans.experiment.ExperimentSequence.SimpleParameters
 import org.peelframework.core.beans.experiment.{ExperimentSequence, ExperimentSuite}
-import org.peelframework.core.beans.system.Lifespan
 import org.peelframework.flink.beans.experiment.FlinkExperiment
 import org.peelframework.flink.beans.job.FlinkJob
 import org.peelframework.flink.beans.system.Flink
@@ -15,9 +13,9 @@ import org.peelframework.spark.beans.system.Spark
 import org.springframework.context.annotation.{Bean, Configuration}
 import org.springframework.context.{ApplicationContext, ApplicationContextAware}
 
-/** Experiments definitions for the 'peel-wordcount' bundle. */
+/** `WordCount` experiment fixtures for the 'peel-wordcount' bundle. */
 @Configuration
-class ExperimentsDefinitions extends ApplicationContextAware {
+class wordcount extends ApplicationContextAware {
 
   /* The enclosing application context. */
   var ctx: ApplicationContext = null
@@ -25,36 +23,6 @@ class ExperimentsDefinitions extends ApplicationContextAware {
   def setApplicationContext(ctx: ApplicationContext): Unit = {
     this.ctx = ctx
   }
-
-  // ---------------------------------------------------
-  // Systems
-  // ---------------------------------------------------
-
-  @Bean(name = Array("hdfs-2.7.1"))
-  def `hdfs-2.7.1`: HDFS2 = new HDFS2(
-    version      = "2.7.1",
-    configKey    = "hadoop-2",
-    lifespan     = Lifespan.SUITE,
-    mc           = ctx.getBean(classOf[Mustache.Compiler])
-  )
-
-  @Bean(name = Array("flink-0.9.0"))
-  def `flink-0.9.0`: Flink = new Flink(
-    version      = "0.9.0",
-    configKey    = "flink",
-    lifespan     = Lifespan.EXPERIMENT,
-    dependencies = Set(ctx.getBean("hdfs-2.7.1", classOf[HDFS2])),
-    mc           = ctx.getBean(classOf[Mustache.Compiler])
-  )
-
-  @Bean(name = Array("spark-1.4.0"))
-  def `spark-1.4.0`: Spark = new Spark(
-    version      = "1.4.0",
-    configKey    = "spark",
-    lifespan     = Lifespan.EXPERIMENT,
-    dependencies = Set(ctx.getBean("hdfs-2.7.1", classOf[HDFS2])),
-    mc           = ctx.getBean(classOf[Mustache.Compiler])
-  )
 
   // ---------------------------------------------------
   // Data Generators
